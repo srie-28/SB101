@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kgisl</groupId>
-	<artifactId>sb101</artifactId>
+	<artifactId>sb1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sb101</name>
+	<name>sb1</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -27,7 +27,10 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>21</java.version>
+		
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -38,6 +41,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.6.0</version>
+</dependency>
+
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -49,12 +59,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
-<dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-    <version>2.6.0</version>
-</dependency>
 	</dependencies>
 
 	<build>
@@ -63,20 +67,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.10.1</version>
-						<configuration>
-							<source>21</source>
-							<target>21</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-			
-
-
+			 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.10.1</version> <!-- Ensure this version supports Java 21 -->
+            <configuration>
+                <source>21</source>
+                <target>21</target>
+            </configuration>
+        </plugin>
+		</plugins>
+	</build>
 
 </project>
