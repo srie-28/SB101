@@ -1,0 +1,32 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - main # or your preferred branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+
+    - name: Build with Maven
+      run: mvn clean install
+
+    - name: Build Docker image
+      run: docker build -t your-app-name .
+
+    - name: Log in to Render
+      uses: renderinc/render-deploy-action@v1
+      with:
+        api-key: ${{ secrets.RENDER_API_KEY }}
+        service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        docker-image: your-app-name
